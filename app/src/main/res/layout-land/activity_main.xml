@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/myHand1"
         app:layout_constraintEnd_toStartOf="@id/myHand3"
-        android:src="@drawable/fairy_nonevolve" />
+        android:src="@null" />
 
     <ImageView
         android:id="@+id/myHand3"
@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/myHand4"
         app:layout_constraintEnd_toStartOf="@id/myHand6"
-        android:src="@drawable/fairy_nonevolve" />
+        android:src="@null" />
 
     <ImageView
         android:id="@+id/myHand6"
