@@ -117,7 +117,7 @@
         app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
         app:layout_constraintStart_toStartOf="@id/FieldLineStart"
         app:layout_constraintEnd_toStartOf="@id/myField2"
-        android:src="@drawable/fairy_nonevolve" />
+        android:src="@null" />
 
     <ImageView
         android:id="@+id/myField2"
@@ -375,6 +375,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <ImageView
+        android:id="@+id/test1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/fairy_nonevolve"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
