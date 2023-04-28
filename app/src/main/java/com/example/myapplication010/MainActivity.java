@@ -21,38 +21,29 @@ public class MainActivity extends Activity{
     //インスタンス変数として定義する
     //MainActivity.javaのインスタンスは1つしかできないので、クラス変数でもインスタンス変数でも挙動は変わらない
     private int[] myHandIds = new int[9];
+    private int[] myFieldIds = new int[5];
+    private int[] enemyFieldIds = new int[5];
     private Guideline myHandLineTop;
     private Context context;
 
-    //ImageViewに対してsetOnTouchListenerを使用すると出てくる警告に従って付けたアノテーション。
-    //ImageViewを"Clickable"にするために必要らしい
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         //ActivityクラスのonCreate()を呼び出す。Bundleオブジェクトは前回のアクティビティが維持していた状態を表す
         super.onCreate(savedInstanceState);
         //activity_main.xmlのレイアウトを適用する
         setContentView(R.layout.activity_main);
 
         //自分の手札のView(myHand)のIDを取得し、配列に格納する
-        for (int i = 0; i < 9; i++) {
-            this.myHandIds[i] = getResources().getIdentifier("myHand" + (i + 1), "id", getPackageName());
-        }
+        setIdArray(this.myHandIds,"myHand");
+        //該当のidの配列を受け取り、すべてのViewに対してTouchDownしたときのリスナーを設定する
+        setTouchDownListener(this.myHandIds);
 
-        //myHandに対してイベントを設定するための処理
-        for (int myHandId:this.myHandIds) {
-            //IDからViewをインスタンス化
-            ImageView myHandImageView = findViewById(myHandId);
-            //該当のImageViewがTouchされた時に呼ばれるリスナー
-            //vはmyHandImageViewのこと
-            myHandImageView.setOnTouchListener((v, event) -> {
-                    //指が画面に触れた瞬間に発生するイベントを定義する
-                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        myHandOnTouchDownEvent(v);
-                    }
-                    return true;
-            });
-        }
+        //自分のフィールドのView(myField)のIDを取得し、配列に格納する
+        setIdArray(this.myFieldIds,"myField");
+        //該当のidの配列を受け取り、すべてのViewに対してTouchDownしたときのリスナーを設定する
+        setTouchDownListener(this.myFieldIds);
+
         //背景画像をIDから検索しViewを変数に格納する
         ImageView background = findViewById(R.id.background);
 
@@ -71,54 +62,67 @@ public class MainActivity extends Activity{
         //Dropされるのはbackgroundの画像なので、backgroundに対してリスナーを定義する
         //vはbackgroundのこと
         background.setOnDragListener((v,event) -> {
+            switch (event.getAction()) {
+                // Dragが終了して、ViewにDropされたときの処理
+                case DragEvent.ACTION_DROP:
+                    //Dropしたときに持っていたViewの情報を取得したいときはgetLocalState()を使用する
+                    View droppedImageView = (View) event.getLocalState();
+                    backgroundDropEvent(droppedImageView,event);
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        });
+
+        //相手のフィールドのView(enemyField)のIDを取得し、配列に格納する
+        setIdArray(this.enemyFieldIds,"enemyField");
+        //myFieldに対してイベントを設定するための処理
+        for (int enemyFieldId:this.enemyFieldIds) {
+            //IDから検索しViewを変数に格納する。
+            ImageView enemyFieldImageView = findViewById(enemyFieldId);
+            //該当のImageViewがTouchされた時に呼ばれるリスナー
+            //vはenemyFieldImageViewのこと
+            enemyFieldImageView.setOnDragListener((v, event) -> {
+                //指が画面に触れた瞬間に発生するイベントを定義する
                 switch (event.getAction()) {
                     // Dragが終了して、ViewにDropされたときの処理
                     case DragEvent.ACTION_DROP:
-
                         //Dropしたときに持っていたViewの情報を取得したいときはgetLocalState()を使用する
-                        ImageView droppedImageView = (ImageView) event.getLocalState();
-                        backgroundDropEvent(droppedImageView,event);
+                        View droppedImageView = (View) event.getLocalState();
+                        enemyFieldDropEvent(v,droppedImageView, event);
                         break;
                     default:
                         break;
                 }
                 return true;
-        });
-
+            });
+        }
     }
 
-    private void myHandOnTouchDownEvent(View v){
+    //ViewがTouchDownされたときのイベント
+    //v:TouchDownされたView
+    private void startDragView(View v){
         //該当のImageViewの画像を取得し、nullでないならDrag状態にする
-        //ImageViewに何も画像がセットされていない（＝@null）ということは、そこにカードが存在していないということを表すため
-        Drawable myHandDrawable =  ((ImageView) v).getDrawable();
-        if (myHandDrawable != null) {
+        if (notNullImageViewSrc((ImageView) v)) {
             // ViewをDrag状態にする
             v.startDrag(null, new View.DragShadowBuilder(v), v, 0);
             //ポップアップを出す
             Toast.makeText(getApplicationContext(), "DragStart!", Toast.LENGTH_SHORT).show();
             //logcatに情報を出力する
-            Log.i("debugMessage","dragstart!");
+            Log.i("debugMessage","Dragstart!");
         }
     }
 
-    private void backgroundDropEvent(ImageView droppedImageView,DragEvent event){
-        //DropしたViewのIDを格納する
-        int droppedImageId = droppedImageView.getId();
-        //Dropしたときに持っていたViewがmyHandであったか否か
-        boolean isMyHand = false ;
-
-        for(int myHandId:this.myHandIds){
-            //Dropしたときに持っていたViewのIDがmyHandのIDとひとつでも一致したときのみ処理を行う
-            if(droppedImageId == myHandId){
-                isMyHand =true;
-                break;
-            }
-        }
+    //backgroundImageViewがDropされたときのイベント
+    //droppedView:DropしたときにもっていたView
+    private void backgroundDropEvent(View droppedView,DragEvent event){
+        //Dropしたときに持っていたViewのIDを格納する
+        int droppedImageId = droppedView.getId();
         //手を離した位置を格納する
         float dropY = event.getY();
-
-        //DropしたViewのIDがmyHandのいずれかであり、手を離した位置がmyHandLineTopより下であるときのみ処理を行う
-        if (isMyHand && dropY < this.myHandLineTop.getY()) {
+        //Dropしたときに持っていたViewのIDがmyHandのいずれかであり、手を離した位置がmyHandLineTopより下であるときのみ処理を行う
+        if (isInIDArray(droppedImageId,this.myHandIds) && dropY < this.myHandLineTop.getY()) {
 
             ImageView myField1ImageView= findViewById(R.id.myField1);
 
@@ -126,10 +130,91 @@ public class MainActivity extends Activity{
             myField1ImageView.setImageDrawable(fairyDrawable);
 
             //ポップアップを表示する
-            Toast.makeText(getApplicationContext(), "Droped!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "myHandDroped!", Toast.LENGTH_SHORT).show();
             //logcatに情報を出力する
-            Log.i("debugMessage","dropped!");
+            Log.i("debugMessage","myHandDropped!");
+
+            //play処理
+
         }
     }
+
+    // v:DropされたView
+    // droppedView:Dropしたときに持っていたView
+    private void enemyFieldDropEvent(View v,View droppedView,DragEvent event){
+        //DropされたImageViewの画像を取得し、nullでないならイベントを発生させる
+        if (notNullImageViewSrc((ImageView) v)) {
+            //Dropしたときに持っていたViewのIDを格納する
+            int droppedImageId = droppedView.getId();
+
+            //Dropしたときに持っていたViewのIDがmyFieldのいずれかであるときのみ処理を行う
+            if (isInIDArray(droppedImageId,this.myFieldIds)) {
+                //ポップアップを表示する
+                Toast.makeText(getApplicationContext(), "MyFieldDroped!", Toast.LENGTH_SHORT).show();
+                //logcatに情報を出力する
+                Log.i("debugMessage", "myFieldDropped!");
+
+                //フォロワーへattack処理
+
+            }
+        }
+    }
+
+    //ImageViewのsrcが@nullでないならtrueを返す
+    //ImageViewに何も画像がセットされていない（＝@null）ということは、そこにカードが存在していないということを表す
+    private boolean notNullImageViewSrc(ImageView imageView){
+
+        Drawable imageViewDrawable =  imageView.getDrawable();
+        if(imageViewDrawable != null){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    //IDを取得し、配列に格納する
+    //指定するidはmyHand1,myHand2,myHand3のように連番である必要がある
+    //また、格納先のidArrayの配列の長さとxmlに定義された該当のidのViewの個数が一致していないとNullpointする可能性があるので注意すること
+    private void setIdArray(int[] idArray, String id){
+        for (int i = 0; i < idArray.length; i++) {
+            idArray[i] = getResources().getIdentifier(id + (i + 1), "id", getPackageName());
+        }
+    }
+
+    //ImageViewに対してsetOnTouchListenerを使用すると出てくる警告に従って付けたアノテーション。
+    //ImageViewを"Clickable"にするために必要らしい
+    @SuppressLint("ClickableViewAccessibility")
+    //該当のidの配列を受け取り、すべてのViewに対してTouchDownしたときのリスナーを設定する
+    private void setTouchDownListener(int[] idArray){
+        //Viewに対してイベントを設定するための処理
+        for (int myViewId:idArray) {
+            //IDから検索しViewを変数に格納する。
+            ImageView myImageView = findViewById(myViewId);
+            //該当のImageViewがTouchされた時に呼ばれるリスナー
+            //vはmyImageViewのこと
+            myImageView.setOnTouchListener((v, event) -> {
+                //指が画面に触れた瞬間に発生するイベントを定義する
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    //ViewにDragがスタートするように定義する
+                    startDragView(v);
+                }
+                return true;
+            });
+        }
+    }
+
+    //idがIDArrayの中でひとつでも一致したときTrueを返す
+    private boolean isInIDArray(int id,int[] idArray){
+        for (int myId : idArray) {
+            if (id == myId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
 }
