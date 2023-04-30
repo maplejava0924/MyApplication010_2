@@ -37,7 +37,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/myHand1"
         app:layout_constraintEnd_toStartOf="@id/myHand3"
-        android:src="@null" />
+        android:src="@drawable/fairy_nonevolve"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/myHand3"
@@ -67,7 +68,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/myHand4"
         app:layout_constraintEnd_toStartOf="@id/myHand6"
-        android:src="@null" />
+        android:src="@drawable/fairy_nonevolve" />
 
     <ImageView
         android:id="@+id/myHand6"
@@ -117,7 +118,8 @@
         app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
         app:layout_constraintStart_toStartOf="@id/FieldLineStart"
         app:layout_constraintEnd_toStartOf="@id/myField2"
-        android:src="@null" />
+        android:src="@drawable/fairy_nonevolve"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/myField2"
@@ -127,7 +129,8 @@
         app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
         app:layout_constraintStart_toEndOf="@id/myField1"
         app:layout_constraintEnd_toStartOf="@id/myField3"
-        android:src="@drawable/fairy_nonevolve" />
+        android:src="@drawable/fairy_nonevolve"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/myField3"
@@ -257,7 +260,8 @@
         app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
         app:layout_constraintStart_toStartOf="@id/FieldLineStart"
         app:layout_constraintEnd_toStartOf="@id/enemyField2"
-        android:src="@drawable/fairy_nonevolve" />
+        android:src="@drawable/fairy_nonevolve"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/enemyField2"
@@ -287,7 +291,7 @@
         app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
         app:layout_constraintStart_toEndOf="@id/enemyField3"
         app:layout_constraintEnd_toStartOf="@id/enemyField5"
-        android:src="@null" />
+        android:src="@drawable/fairy_nonevolve" />
 
     <ImageView
         android:id="@+id/enemyField5"
