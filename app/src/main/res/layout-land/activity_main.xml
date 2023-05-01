@@ -9,6 +9,9 @@
         <variable
             name="wowViewModel"
             type="com.example.myapplication010.viewmodel.MyViewModel" />
+        <variable
+            name="testViewModel"
+            type="com.example.myapplication010.viewmodel.MyViewModel" />
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -146,7 +149,7 @@
             android:id="@+id/myField3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/fairy_nonevolve"
+            app:imageResource="@{testViewModel.resource}"
             app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
             app:layout_constraintEnd_toStartOf="@id/myField4"
             app:layout_constraintStart_toEndOf="@id/myField2"

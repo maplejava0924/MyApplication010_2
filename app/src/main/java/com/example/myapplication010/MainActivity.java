@@ -30,6 +30,7 @@ public class MainActivity extends Activity{
 
     MyViewModel viewModel ;
     MyViewModel wowViewModel ;
+    MyViewModel testViewModel ;
 
 
     @Override
@@ -45,6 +46,11 @@ public class MainActivity extends Activity{
 
         wowViewModel = new MyViewModel("wowテスト");
         binding.setWowViewModel(wowViewModel);
+
+        testViewModel = new MyViewModel("aテスト");
+        testViewModel.getResource().set(R.drawable.fairy_nonevolve);
+        binding.setTestViewModel(testViewModel);
+
 
         //自分の手札のView(myHand)のIDを取得し、配列に格納する
         setIdArray(this.myHandIds,"myHand");
@@ -170,6 +176,7 @@ public class MainActivity extends Activity{
             //play処理
             viewModel.getText().set("Oh-Yeah!!!!!");
             wowViewModel.getText().set("play!!!!!!!");
+            testViewModel.getResource().set(R.drawable.rhinoceroach_nonevolve);
         }
     }
 
