@@ -1,405 +1,437 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.myapplication010.viewmodel.MyViewModel" />
+        <variable
+            name="wowViewModel"
+            type="com.example.myapplication010.viewmodel.MyViewModel" />
 
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0"
-        android:src="@drawable/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/myHand1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/myHandLineStart"
-        app:layout_constraintEnd_toStartOf="@+id/myHand2"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/myHand2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand1"
-        app:layout_constraintEnd_toStartOf="@id/myHand3"
-        android:src="@drawable/fairy_nonevolve"
-        android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/myHand1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/myHandLineStart"
+            app:layout_constraintEnd_toStartOf="@+id/myHand2"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myHand3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand2"
-        app:layout_constraintEnd_toStartOf="@id/myHand4"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand1"
+            app:layout_constraintEnd_toStartOf="@id/myHand3"
+            android:src="@drawable/fairy_nonevolve"
+            android:visibility="invisible"/>
 
-    <ImageView
-        android:id="@+id/myHand4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand3"
-        app:layout_constraintEnd_toStartOf="@id/myHand5"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand2"
+            app:layout_constraintEnd_toStartOf="@id/myHand4"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myHand5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand4"
-        app:layout_constraintEnd_toStartOf="@id/myHand6"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand3"
+            app:layout_constraintEnd_toStartOf="@id/myHand5"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myHand6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand5"
-        app:layout_constraintEnd_toStartOf="@id/myHand7"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand4"
+            app:layout_constraintEnd_toStartOf="@id/myHand6"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myHand7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand6"
-        app:layout_constraintEnd_toStartOf="@id/myHand8"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand5"
+            app:layout_constraintEnd_toStartOf="@id/myHand7"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myHand8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand7"
-        app:layout_constraintEnd_toStartOf="@id/myHand9"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand6"
+            app:layout_constraintEnd_toStartOf="@id/myHand8"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myHand9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/myHand8"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myHand8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand7"
+            app:layout_constraintEnd_toStartOf="@id/myHand9"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myField1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
-        app:layout_constraintStart_toStartOf="@id/FieldLineStart"
-        app:layout_constraintEnd_toStartOf="@id/myField2"
-        android:src="@drawable/fairy_nonevolve"
-        android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/myHand9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myHandLineTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/myHand8"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/myField2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/myField1"
-        app:layout_constraintEnd_toStartOf="@id/myField3"
-        android:src="@drawable/fairy_nonevolve"
-        android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/myField1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
+            app:layout_constraintStart_toStartOf="@id/FieldLineStart"
+            app:layout_constraintEnd_toStartOf="@id/myField2"
+            android:src="@drawable/fairy_nonevolve"
+            android:visibility="invisible"/>
 
-    <ImageView
-        android:id="@+id/myField3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/myField2"
-        app:layout_constraintEnd_toStartOf="@id/myField4"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myField2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/myField1"
+            app:layout_constraintEnd_toStartOf="@id/myField3"
+            android:src="@drawable/fairy_nonevolve"
+            android:visibility="invisible"/>
 
-    <ImageView
-        android:id="@+id/myField4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/myField3"
-        app:layout_constraintEnd_toStartOf="@id/myField5"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myField3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/fairy_nonevolve"
+            app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
+            app:layout_constraintEnd_toStartOf="@id/myField4"
+            app:layout_constraintStart_toEndOf="@id/myField2"
+            app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/myField5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/myField4"
-        app:layout_constraintEnd_toStartOf="@id/FieldLineEnd"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myField4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/myField3"
+            app:layout_constraintEnd_toStartOf="@id/myField5"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toStartOf="@id/enemyHandLineStart"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand2"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/myField5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/myFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/myFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/myField4"
+            app:layout_constraintEnd_toStartOf="@id/FieldLineEnd"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand1"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand3"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toStartOf="@id/enemyHandLineStart"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand2"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand2"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand4"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand1"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand3"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand3"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand5"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand2"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand4"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand4"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand6"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand3"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand5"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand5"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand7"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand4"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand6"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand6"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand8"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand5"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand7"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand7"
-        app:layout_constraintEnd_toStartOf="@+id/enemyHand9"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand6"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand8"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyHand9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyHand8"
-        app:layout_constraintEnd_toEndOf="@id/enemyHandLineEnd"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyHand8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand7"
+            app:layout_constraintEnd_toStartOf="@+id/enemyHand9"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyField1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
-        app:layout_constraintStart_toStartOf="@id/FieldLineStart"
-        app:layout_constraintEnd_toStartOf="@id/enemyField2"
-        android:src="@drawable/fairy_nonevolve"
-        android:visibility="invisible" />
+        <ImageView
+            android:id="@+id/enemyHand9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyHandLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyHand8"
+            app:layout_constraintEnd_toEndOf="@id/enemyHandLineEnd"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyField2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyField1"
-        app:layout_constraintEnd_toStartOf="@id/enemyField3"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyField1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
+            app:layout_constraintStart_toStartOf="@id/FieldLineStart"
+            app:layout_constraintEnd_toStartOf="@id/enemyField2"
+            android:src="@drawable/fairy_nonevolve"
+            android:visibility="invisible" />
 
-    <ImageView
-        android:id="@+id/enemyField3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyField2"
-        app:layout_constraintEnd_toStartOf="@id/enemyField4"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyField2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyField1"
+            app:layout_constraintEnd_toStartOf="@id/enemyField3"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyField4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyField3"
-        app:layout_constraintEnd_toStartOf="@id/enemyField5"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyField3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyField2"
+            app:layout_constraintEnd_toStartOf="@id/enemyField4"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <ImageView
-        android:id="@+id/enemyField5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
-        app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
-        app:layout_constraintStart_toEndOf="@id/enemyField4"
-        app:layout_constraintEnd_toEndOf="@id/FieldLineEnd"
-        android:src="@drawable/fairy_nonevolve" />
+        <ImageView
+            android:id="@+id/enemyField4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyField3"
+            app:layout_constraintEnd_toStartOf="@id/enemyField5"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/myHandLineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        <ImageView
+            android:id="@+id/enemyField5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/enemyFieldLineTop"
+            app:layout_constraintBottom_toBottomOf="@id/enemyFieldLineBottom"
+            app:layout_constraintStart_toEndOf="@id/enemyField4"
+            app:layout_constraintEnd_toEndOf="@id/FieldLineEnd"
+            android:src="@drawable/fairy_nonevolve" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/myHandLineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.60"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/myHandLineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/enemyHandLineBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/myHandLineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.60"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/enemyHandLineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.08"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/enemyHandLineBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/enemyHandLineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.38"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/enemyHandLineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/enemyFieldLineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/enemyHandLineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.38"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/enemyFieldLineBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/enemyFieldLineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.24" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/myFieldLineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.46" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/enemyFieldLineBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/myFieldLineBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.68" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/myFieldLineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.46" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/FieldLineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/myFieldLineBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.68" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/FieldLineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/FieldLineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
 
-    <ImageView
-        android:id="@+id/test1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/fairy_nonevolve"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTop_toTopOf="@+id/background" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/FieldLineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
 
-    <ImageView
-        android:id="@+id/enemyLeader"
-        android:layout_width="115dp"
-        android:layout_height="126dp"
-        android:layout_marginBottom="304dp"
-        android:src="@drawable/leader_enemy"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="@+id/background" />
+        <ImageView
+            android:id="@+id/test1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/fairy_nonevolve"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintStart_toStartOf="@+id/background"
+            app:layout_constraintTop_toTopOf="@+id/background" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/enemyLeader"
+            android:layout_width="115dp"
+            android:layout_height="126dp"
+            android:layout_marginBottom="304dp"
+            android:src="@drawable/leader_enemy"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintHorizontal_bias="0.499"
+            app:layout_constraintStart_toStartOf="@+id/background" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="614dp"
+            android:layout_height="18dp"
+            android:text="@{viewModel.text}"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintStart_toStartOf="@+id/background" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:text="@{wowViewModel.text}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.196"
+            app:layout_constraintStart_toStartOf="@+id/background"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

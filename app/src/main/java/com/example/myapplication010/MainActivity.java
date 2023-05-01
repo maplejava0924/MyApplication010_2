@@ -1,6 +1,7 @@
 package com.example.myapplication010;
 
 import androidx.constraintlayout.widget.Guideline;
+import androidx.databinding.DataBindingUtil;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,6 +14,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication010.databinding.ActivityMainBinding;
+import com.example.myapplication010.viewmodel.MyViewModel;
+
 //MainActivity.javaはAndroidManifest.xmlのactivityタグの記載の通りAndroidOSによってインスタンス化される
 public class MainActivity extends Activity{
 
@@ -24,13 +28,23 @@ public class MainActivity extends Activity{
     private Guideline myHandLineTop;
     private Context context;
 
+    MyViewModel viewModel ;
+    MyViewModel wowViewModel ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //ActivityクラスのonCreate()を呼び出す。Bundleオブジェクトは前回のアクティビティが維持していた状態を表す
         super.onCreate(savedInstanceState);
         //activity_main.xmlのレイアウトを適用する
-        setContentView(R.layout.activity_main);
+        //DataBindingを有効にする
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        viewModel = new MyViewModel("テスト");
+        binding.setViewModel(viewModel);
+
+        wowViewModel = new MyViewModel("wowテスト");
+        binding.setWowViewModel(wowViewModel);
 
         //自分の手札のView(myHand)のIDを取得し、配列に格納する
         setIdArray(this.myHandIds,"myHand");
@@ -154,6 +168,8 @@ public class MainActivity extends Activity{
             Log.i("debugMessage","myHandDropped!");
 
             //play処理
+            viewModel.getText().set("Oh-Yeah!!!!!");
+            wowViewModel.getText().set("play!!!!!!!");
         }
     }
 
@@ -174,8 +190,10 @@ public class MainActivity extends Activity{
 
             if(attackToFollower){
                 //フォロワーへattack処理
+                wowViewModel.getText().set("follower!!!!!");
             }else{
                 //リーダーへattack処理
+                wowViewModel.getText().set("leader!!!!!");
             }
 
         }
